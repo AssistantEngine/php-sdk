@@ -12,7 +12,7 @@ composer require assistant-engine/php-sdk
 <?php
 
 use AssistantEngine\SDK\AssistantEngine;
-use AssistantEngine\SDK\Models\ConversationOption;
+use AssistantEngine\SDK\Models\Options\ConversationOption;
 
 $apiUrl = 'https://api.assistant-engine.com/v1';
 $apiKey = 'your_assistant_engine_token';
