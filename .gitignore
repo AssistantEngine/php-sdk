@@ -1,0 +1,4 @@
+/vendor/
+.idea
+/run.php
+/cleanup.sh
