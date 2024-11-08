@@ -1,0 +1,27 @@
+{
+  "name": "assistant-engine/php-sdk",
+  "description": "PHP SDK for seamless integration with the Assistant Engine, a SaaS solution for managing assistants, tasks, and projects.",
+  "type": "library",
+  "require": {
+    "php": "^8.2",
+    "guzzlehttp/guzzle": "^7.0 || ^7.9.2"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Florian Weigang",
+      "email": "florian@assistant-engine.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "AssistantEngine\\SDK\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

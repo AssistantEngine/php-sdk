@@ -1,0 +1,6 @@
+/vendor/
+.idea
+/run.php
+/cleanup.sh
+/combine/
+composer.lock
