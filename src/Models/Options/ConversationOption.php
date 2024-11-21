@@ -25,6 +25,11 @@ class ConversationOption
     /** @var bool|null */
     public ?bool $recreate = null;
 
+    /** @var bool|null */
+    public ?bool $run_on_creation = null;
+
+    public ?ConversationOption $initial_message = null;
+
     /**
      * ConversationOption constructor.
      *
@@ -42,6 +47,8 @@ class ConversationOption
         $this->context = $options['context'] ?? [];
         $this->additional_data = $options['additional_data'] ?? [];
         $this->recreate = $options['recreate'] ?? null;
+        $this->run_on_creation = $options['run_on_creation'] ?? null;
+        $this->initial_message = $options['initial_message'] ?? null;
     }
 
     /**
@@ -59,6 +66,8 @@ class ConversationOption
             'context' => $this->context,
             'additional_data' => $this->additional_data,
             'recreate' => $this->recreate,
+            'run_on_creation' => $this->run_on_creation,
+            'initial_message' => $this->initial_message,
         ];
     }
 }
