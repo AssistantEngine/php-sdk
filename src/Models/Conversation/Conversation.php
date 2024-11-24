@@ -128,6 +128,23 @@ class Conversation
     }
 
     /**
+     * Count total pending action items which are required actions.
+     * @return int
+     */
+    public function countPendingRequiredActions(): int
+    {
+        $count = 0;
+        foreach ($this->pending_items as $item) {
+            foreach ($item->actions as $action) {
+                if ($action->status === ConversationItemAction::STATUS_REQUIRES_CONFIRMATION) {
+                    $count++;
+                }
+            }
+        }
+        return $count;
+    }
+
+    /**
      * Count total messages in pending items.
      * @return int
      */
@@ -142,7 +159,7 @@ class Conversation
      */
     public function countTotalMessages(): int
     {
-        return $this->countHistoryMessages() + $this->countPendingMessages();
+        return $this->countHistoryMessages() + $this->countPendingMessages() + $this->countPendingRequiredActions();
     }
 
     /**

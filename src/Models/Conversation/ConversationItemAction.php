@@ -12,6 +12,8 @@ class ConversationItemAction
     public const STATUS_ERROR = 'error';
     public const STATUS_SUCCESS = 'success';
 
+    public const STATUS_REQUIRES_CONFIRMATION= 'requires_confirmation';
+
     /** @var string */
     public string $id;
 
@@ -20,6 +22,9 @@ class ConversationItemAction
 
     /** @var string */
     public string $content;
+
+    /** @var string */
+    public ?array $params = null;
 
     /** @var string|null */
     public ?string $status = null;
@@ -35,6 +40,7 @@ class ConversationItemAction
         $this->role = $data['role'];
         $this->content = $data['content'];
         $this->status = $data['status'] ?? null;
+        $this->params = $data['params'] ?? null;
     }
 
     /**
@@ -49,6 +55,7 @@ class ConversationItemAction
             'role' => $this->role,
             'content' => $this->content,
             'status' => $this->status,
+            'params' => $this->params,
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace AssistantEngine\SDK;
 
 use AssistantEngine\SDK\Models\Conversation\Conversation;
+use AssistantEngine\SDK\Models\Options\ApprovalOption;
 use AssistantEngine\SDK\Models\Options\ConversationOption;
 use AssistantEngine\SDK\Models\Options\ConversationUpdateOption;
 use AssistantEngine\SDK\Models\Options\MessageOption;
@@ -252,6 +253,34 @@ class AssistantEngine
             ]);
 
             return json_decode($response->getBody(), true);
+        } catch (GuzzleException $e) {
+            // Handle or log the exception
+            throw $e;
+        }
+    }
+
+    /**
+     * Process approval or rejection for a conversation tool call.
+     *
+     * @param int $conversationId
+     * @param ApprovalOption $approvalOption
+     * @return array
+     * @throws GuzzleException
+     */
+    public function processApproval(int $conversationId, ApprovalOption $approvalOption): array
+    {
+        try {
+            // Make a PATCH request to process approval or rejection
+            $response = $this->client->put("conversations/{$conversationId}/approval", [
+                'json' => $approvalOption->toArray(),
+                'headers' => [
+                    'x-llm-key' => $this->openAIToken,
+                ],
+            ]);
+
+            // Return the decoded response
+            return json_decode($response->getBody(), true);
+
         } catch (GuzzleException $e) {
             // Handle or log the exception
             throw $e;
